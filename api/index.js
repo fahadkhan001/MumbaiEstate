@@ -17,6 +17,7 @@ mongoose
 
 
 const app = express();
+app.use(express.json())
 
 app.listen(3000,()=>{
     console.log("Server is Running on port 3000")
@@ -32,11 +33,11 @@ app.use("/api/auth",authRouter);
 
 //middleware
 app.use((err,req,res,next)=>{
-    const statusCode = err.statusCode|| 500;
-    const message = err.message||'Internal server Error'
+    const statusCode = err.statusCode || 500;
+    const message = err.message||'Internal server Error index.js'
     return res.status(statusCode).json({
-        success :false,
+        success:false,
         statusCode,
         message,
-    })
-})
+    });
+});
