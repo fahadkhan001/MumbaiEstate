@@ -27,7 +27,7 @@ app.use(express.json());
 
 
 app.use("/api/user",userRouter)
-app.use("/api/auth",authRouter); 
+app.use("/api/auth", authRouter); 
 
 
 

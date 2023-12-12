@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {signInStart,signInSuccess,signInFailure} from '../redux/user/userSlice'
+import OAuth from '../components/OAuth';
+import PhoneNumber from '../components/PhoneNumber';
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -41,6 +43,7 @@ export default function SignIn() {
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className=' text-blue-600 text-5xl text-center font font-semibold my-3 '>Mumbai Estate</h1>
       <h4 className='text-3xl text-center font-semibold my-3 '>Sign-In</h4>
+
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
           type='email'
@@ -63,6 +66,8 @@ export default function SignIn() {
         >
           {loading ? 'Loading...' : 'Sign Up'}
         </button>
+        <PhoneNumber/>
+        <OAuth/>
         
       </form>
       <div className='flex gap-2 mt-5'>
