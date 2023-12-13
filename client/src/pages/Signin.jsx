@@ -66,7 +66,7 @@ export default function SignIn() {
         >
           {loading ? 'Loading...' : 'Sign Up'}
         </button>
-        <PhoneNumber/>
+       {/* <PhoneNumber/> */}
         <OAuth/>
         
       </form>
