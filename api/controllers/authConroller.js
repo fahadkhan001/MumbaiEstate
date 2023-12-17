@@ -22,13 +22,13 @@ try {
 export const signin=async(req,res,next)=>{
  const {email,password}=req.body;
  try {
-  const validuser = await User.findOne({email});
-  if(!validuser)return next(errorHandler(404,"User not found"));
-  const validpassword= bcryptjs.compareSync(password,validuser.password);
+  const validUser = await User.findOne({email});
+  if(!validUser)return next(errorHandler(404,"User not found"));
+  const validpassword= bcryptjs.compareSync(password,validUser.password);
   if(!validpassword) return next(errorHandler(401,"Invalid Password"));
-  const token = Jwt.sign({id:validuser._id},process.env.JWT_SECRET);
+  const token = jwt.sign({id:validUser._id},process.env.JWT_SECRET);
 //we dont want password in our response hence
-const {password:pass, ...rest}= validuser._doc;
+const {password:pass, ...rest}= validUser._doc;
   //we want to save this token as cookie and to do that and we ussed http only so that no 3rd party can access.and can also add expiry date
   res.cookie('access_token',token,{httpOnly:true}).status(200).json(rest)
  } catch (error) {
