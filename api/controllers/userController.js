@@ -24,13 +24,14 @@ export const updateUser = async(req,res,next)=>{
                 avatar:req.body.avatar,
             }
             //it is important to write new:true so that the new changes are saaved ans wee see the ne changes   
-        },{new: true}
+        },
+        {new: true}
         );
         const {password, ...rest}= updatedUser._doc;
         res.status(200).json(rest)
-        
+
     } catch (error) {
         next(error)
     }
     
-}
+};

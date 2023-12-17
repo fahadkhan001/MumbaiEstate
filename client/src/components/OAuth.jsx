@@ -4,16 +4,17 @@ import { useDispatch } from 'react-redux';
 import { signInSuccess } from '../redux/user/userSlice.js';
 import { useNavigate } from 'react-router-dom';
 
-const OAuth = () => {
+export default function OAuth (){
     const dispatch= useDispatch();
     const navigate= useNavigate();
+
+
     const handleGoogleClick=async()=>{
         
         try {
             const provider = new GoogleAuthProvider();
             const auth = getAuth(app);
             const result =await signInWithPopup(auth,provider)
-            console.log(result)
             const res = await fetch('/api/auth/google',{
                 method:"POST",
                 headers:{
@@ -41,4 +42,3 @@ const OAuth = () => {
   )
 }
 
-export default OAuth
