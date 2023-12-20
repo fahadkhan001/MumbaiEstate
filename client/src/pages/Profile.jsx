@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import {getDownloadURL, getStorage, ref, uploadBytesResumable} from 'firebase/storage'
 import { app } from '../firebase'
 import { updateUserStart,updateUserFailure,updateUserSuccess,deleteUserFailure,deleteUserSuccess,deleteUserStart, SignOutUserStart, SignOutUserFailure, SignOutUserSuccess } from '../redux/user/userSlice.js'
+import {Link}   from 'react-router-dom'
+
 
 //firebase storage
 // allow read;
@@ -161,6 +163,7 @@ try {
      placeholder='password'
      className='p-3 border rounded-lg '  />
     <button disabled={loading} className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-95s'>{loading? 'Loading...':'Update'}</button>
+    <Link className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95' to={"/create-listing"}>Create Listing</Link>
     </form>
     <div className='flex justify-between mt-5'>
     <span onClick={handleDeleteUser} className='text-red-700'>Delete account?</span>
