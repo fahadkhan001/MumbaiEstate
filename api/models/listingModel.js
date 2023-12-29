@@ -65,11 +65,11 @@ const listingSchema = new mongoose.Schema(
             required:true,
 
         },
-        projectBy:{
-            type:String,
-            required:true,
+        // projectBy:{
+        //     type:String,
+        //     required:true,
             
-        },
+        // },
 
     }, {timestamps:true}
 )
