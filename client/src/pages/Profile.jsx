@@ -155,7 +155,7 @@ const handleListingDelete = async(listingID) =>{
       return;
     }
 
-    //we gonna get the previous data and filter out everthing that dosent match with thid data
+    //we gonna get the previous data and filter out everthing that dosent match with thid
     setUserListings((prev)=>
     prev.filter((listing)=> listing._id !==listingID)
     )
@@ -230,8 +230,10 @@ const handleListingDelete = async(listingID) =>{
   
         <div className='flex flex-col items-center'>
         {/*Since we need to delete the id we need to use callback and pass id as reference */}
-        <button onClick={()=>handleListingDelete(listing._id)} className='tect-red-700 uppercase'>Delete</button>
-        <button className='tect-green-700 uppercase'>Edit</button>
+        <button onClick={()=>handleListingDelete(listing._id)} className='text-red-700 uppercase'>Delete</button>
+        <Link to={`/update-listing/${listing._id}`}>
+        <button className='text-green-700 uppercase'>Edit</button>
+        </Link>
         </div>
     
       </div>

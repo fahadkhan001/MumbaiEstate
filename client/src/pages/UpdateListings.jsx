@@ -1,12 +1,13 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {app} from '../firebase'
 import { getDownloadURL, ref, uploadBytesResumable,getStorage } from "firebase/storage";
 import { useSelector } from "react-redux";
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 
 export default function CreateListing() {
     const {currentUser}  = useSelector((state)=>state.user)
     const navigate = useNavigate();
+    const params = useParams();
     const [files, setFiles] = useState([]);
     console.log(files);
     const [formData, setFormData]= useState({
@@ -32,6 +33,22 @@ const [loading,setLoading] = useState(false);
 
 
 console.log(formData)
+
+useEffect(()=>{
+    const fetchListing = async()=>{
+        const listingId = params.listingId;
+        const res = await fetch(`/api/listing/get/${listingId}`)
+        const data  =  await res.json();
+        if(data.success===false){
+            setError(data.message)
+            return;
+        }
+        setFormData(data);
+    }
+    fetchListing();
+},[])
+
+
 //we dont want to submit the button so we need to set its type to button
 const handleImageSubmit=(e)=>{
  e.preventDefault();
@@ -125,7 +142,7 @@ const handleSubmit = async(e)=>{
  try {
     setLoading(true);
     setError(false);
-    const res = await fetch('/api/listing/create',{
+    const res = await fetch(`/api/listing/update/${params.listingId}`,{
         method:'POST',
         headers:{
             'Content-Type':"application/json",
@@ -150,7 +167,7 @@ const handleSubmit = async(e)=>{
 
   return (
     <main className="p-3 max-w-4xl mx-auto">
-    <h1 className='text-3xl font-semibold text-center my-7'>Create a Listing</h1>
+    <h1 className='text-3xl font-semibold text-center my-7'>Update Listing</h1>
     <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
     <div className='flex flex-col gap-4 flex-1'>
     <input type='text' placeholder='Name' className='border p-3 rounded-lg' id='name' maxLength='62' onChange={handleChange} value={formData.name} minLength='5' required />
@@ -259,7 +276,7 @@ const handleSubmit = async(e)=>{
         ))
     }
     <button disabled={loading || uploading} className="p-3 bg-blue-700 rounded-lg uppercase hover:opacity-90 disabled:opacity-80 ">
-    {loading ? 'Creating': 'Create Listing'}
+    {loading ? 'Updating...': 'Update Listing'}
     </button>
     {error && <p className="text-red-700">{error}</p>}
     </div>
