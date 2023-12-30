@@ -144,6 +144,27 @@ try {
 }
 
 
+const handleListingDelete = async(listingID) =>{
+  try {
+    const res = await fetch(`/api/listing/delete/${listingID}`,{
+      method : 'DELETE',
+    })
+    const data  = await res.json();
+    if(data.success ===false){
+      console.log(data.message)
+      return;
+    }
+
+    //we gonna get the previous data and filter out everthing that dosent match with thid data
+    setUserListings((prev)=>
+    prev.filter((listing)=> listing._id !==listingID)
+    )
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+
   return (
     <div className='p-3 max-w-lg mx-auto' >
     <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
@@ -193,7 +214,7 @@ try {
     {userListings && 
     userListings.length >   0 && 
       <div className='flex flex-col gap-4'>
-      <h1 className='text-center mt -7 text-2xl'>Your Listings</h1>
+      <h1 className='text-center mt-7 text-2xl'>Your Listings</h1>
       {userListings.map((listing)=>(
       <div key={listing._id} className=' border rounded-lg p-3 flex justify-between items-center gap-0'>
       <Link to={`/listing/${listing._id}`}>
@@ -208,7 +229,8 @@ try {
     </Link>
   
         <div className='flex flex-col items-center'>
-        <button className='tect-red-700 uppercase'>Delete</button>
+        {/*Since we need to delete the id we need to use callback and pass id as reference */}
+        <button onClick={()=>handleListingDelete(listing._id)} className='tect-red-700 uppercase'>Delete</button>
         <button className='tect-green-700 uppercase'>Edit</button>
         </div>
     
