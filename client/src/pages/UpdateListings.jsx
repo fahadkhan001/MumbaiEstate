@@ -171,7 +171,7 @@ const handleSubmit = async(e)=>{
     <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
     <div className='flex flex-col gap-4 flex-1'>
     <input type='text' placeholder='Name' className='border p-3 rounded-lg' id='name' maxLength='62' onChange={handleChange} value={formData.name} minLength='5' required />
-    <input type='text' placeholder='Description' className='border p-3 rounded-lg' id='description' onChange={handleChange} value={formData.description} maxLength='62' minLength='15' required />
+    <input type='text' placeholder='Description' className='border p-3 rounded-lg' id='description' onChange={handleChange} value={formData.description}  minLength='15' required />
     <input type='text' placeholder='Address' className='border p-3 rounded-lg' id='address' onChange={handleChange} value={formData.address} required />
     {/*<input type='text' placeholder='Projectby' className='border p-3 rounded-lg' id='projectby' maxLength='62' onChange={handleChange} value={formData.projectBy} minLength='5' required />  */}
     <div className="flex gap-6 flex-wrap">
@@ -223,7 +223,7 @@ const handleSubmit = async(e)=>{
             <div className='flex flex-col items-center'>
               <p>Regular price</p>
               {formData.type === 'rent' && (
-                <span className='text-xs'>($ / month)</span>
+                <span className='text-xs'>(₹ / month)</span>
               )}
             </div>
           </div>
@@ -243,7 +243,7 @@ const handleSubmit = async(e)=>{
                 <p>Discounted price</p>
 
                 {formData.type === 'rent' && (
-                  <span className='text-xs'>($ / month)</span>
+                  <span className='text-xs'>(₹ / month)</span>
                 )}
               </div>
             </div>
