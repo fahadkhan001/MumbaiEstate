@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import Listing from "../models/listingModel.js";
 import { errorHandler } from "../utils/error.js";
 
@@ -65,3 +66,4 @@ export const updateListing = async (req, res, next) => {
         next(error)
     }
   }
+

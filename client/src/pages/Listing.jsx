@@ -10,11 +10,11 @@ import {
     FaBed,
     FaChair,
     FaMapMarkedAlt,
-    FaMapMarkerAlt,
     FaParking,
     FaShare,
   } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import Contact from '../components/Contact';
 
 const Listing = () => {
     SwiperCore.use([Navigation])
@@ -125,7 +125,12 @@ const Listing = () => {
             {listing.furnished ? 'Furnished' : "Non Furnnshed"}
             </li>
             </ul>
-            </div>
+
+            {currentUser && listing.userRef !== currentUser._id && !contact &&(
+            <button onClick={()=>setContact(true)} className='bg-blue-700 text-gray-50 rounded-lg uppercase hover:opacity-95 p-3'>Contact Owner</button>
+            )}
+            {contact && <Contact listing={listing} />}
+            </div>  
 
 
             </div> 
