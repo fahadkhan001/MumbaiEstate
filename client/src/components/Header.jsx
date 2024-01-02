@@ -42,7 +42,7 @@ export default function Header() {
     {/*Search bar */}
 
     <form onSubmit={handleSubmit} className='bg-blue-600 p-3 rounded-lg flex items-center'>
-    <input type='text' value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)}  placeholder='Search...' className='bg-transparent focus:outline-none w-24 sm:w-64'/> {/*to remove the outline we need to use focus:outlinenone */}
+    <input type='text' value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)}  placeholder='Search...' className='bg-transparent text-white focus:outline-none w-24 sm:w-64'/> {/*to remove the outline we need to use focus:outlinenone */}
     <button>
     <FaSearch className='text-blue-400 '/>
     </button>
