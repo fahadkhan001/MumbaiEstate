@@ -108,7 +108,7 @@ const handleSubmit =(e)=>{
     urlParams.set('sort',sidebardata.sort);
     urlParams.set('order',sidebardata.order);
     const searchQuery = urlParams.toString();
-    navigate(`/search/${searchQuery}`)
+    navigate(`/search?  ${searchQuery}`)
 }
   return (
     <div className='flex flex-col md:flex-row'>
