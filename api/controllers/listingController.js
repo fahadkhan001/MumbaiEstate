@@ -90,7 +90,7 @@ export const getListings = async(req,res,next)=>{
       parking = {$in:[false,true]};
     }
 
-    let type  =req.query.type ;
+    let type=req.query.type ;
     if(type==='all'|| type===undefined){
       type= {$in:['sale','rent']};
     } 
@@ -108,7 +108,7 @@ export const getListings = async(req,res,next)=>{
       offer,
       type,
       furnished,
-      parking
+      parking 
     }).sort(
       {[sort]:order}
     ).limit(limit).skip(startIndex);

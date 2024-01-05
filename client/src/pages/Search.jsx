@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import ListingCard from '../components/ListingCard';
 
 export default function Search() {
     const navigate = useNavigate();
@@ -108,7 +109,7 @@ const handleSubmit =(e)=>{
     urlParams.set('sort',sidebardata.sort);
     urlParams.set('order',sidebardata.order);
     const searchQuery = urlParams.toString();
-    navigate(`/search?  ${searchQuery}`)
+    navigate(`/search?${searchQuery}`)
 }
   return (
     <div className='flex flex-col md:flex-row'>
@@ -161,8 +162,21 @@ const handleSubmit =(e)=>{
             </form>
         </div>
 
-        <div className=''> 
+        <div className='p-7 flex flex-col gap-4'> 
         <h1 className='text-3xl font-semibold border-b p-3 text-blue-500 mt-5'>Listing Results:</h1>
+            <div className=''>
+                {!loading && listings.length===0 &&(
+                    <p className='text-xl text-red-700'>No Listing found!</p>
+                )}
+
+                {loading &&(
+                    <p className='text-xl text-blue-700 text-center'>loading...</p>
+                )}
+                { !loading && listings && listings.map((listing)=>(
+                    <ListingCard key={listing._id} listing={listing} />
+                ))}
+            
+            </div>
         </div>
     
     </div>
