@@ -1,4 +1,3 @@
-
 import Listing from "../models/listingModel.js";
 import { errorHandler } from "../utils/error.js";
 import { request } from "express";
@@ -11,6 +10,7 @@ export const createListing=async(req,res,next)=>{
         next(error)
     }
 } 
+
 
 
 export const deleteListing = async(req,res,next)=>{
