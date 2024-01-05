@@ -6,6 +6,7 @@ export default function Search() {
     const navigate = useNavigate();
     const [loading,setLoading] = useState(false)
     const [listings,setListings] = useState([])
+    const [showmore,setShowMore] = useState(false)
     const [sidebardata,setSideBarData] = useState({
         searchTerm:'',
         type:'all',
@@ -53,10 +54,17 @@ useEffect(()=>{
 
         const fetchListings = async()=>{
             setLoading(true);
+            setShowMore(false);
             //we want the updated url in useparams in useefect
             const searchQuery = urlParams.toString();
             const res = await fetch(`/api/listing/get?${searchQuery}`)
             const data = await res.json();
+            if(data.length > 8){
+                setShowMore(true)
+            }
+            else{
+                setShowMore(false)
+            }
             setListings(data);
             setLoading(false);
         }
@@ -111,6 +119,24 @@ const handleSubmit =(e)=>{
     const searchQuery = urlParams.toString();
     navigate(`/search?${searchQuery}`)
 }
+
+const onShowMoreClick = async()=>{
+//In show more we will start from 10 hence we need the length and we need to add
+const numberOfListings = listings.length;
+const startIndex = numberOfListings;
+const urlParams = new URLSearchParams(location.search)
+//we need to add startinsdex
+urlParams.set('startIndex',startIndex)
+const searchQuery = urlParams.toString();
+//now we need to fetch data
+const res = await fetch(`/api/listing/get?${searchQuery}`)
+const data = await res.json();
+if(data.length<9){
+    setShowMore(false);
+}
+setListings(...listings, ...data)
+}
+
   return (
     <div className='flex flex-col md:flex-row'>
         <div className=' bg-blue-500 p-7 border-b-2 md:border-r-2 md:min-h-screen '> 
@@ -175,7 +201,11 @@ const handleSubmit =(e)=>{
                 { !loading && listings && listings.map((listing)=>(
                     <ListingCard key={listing._id} listing={listing} />
                 ))}
-            
+                
+                {showmore && (
+                    <button onClick={onShowMoreClick}
+                    className='text-green-700 hover:underline p-7 text-center w-full'>Show more</button>
+                )}
             </div>
         </div>
     
