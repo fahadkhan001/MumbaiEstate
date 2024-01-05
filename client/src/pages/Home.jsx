@@ -66,7 +66,7 @@ export default function Home() {
       <h1 className='text-red-700 font-bold text-3xl lg:text-6xl'>Your story <span className='text-blue-700'>begins</span> here</h1>
       
       <div className='text-gray-400 text-sm sm:text-sm'>
-      Mumbai Estate: Your doorway to dream homes awaits. Explore curated properties, redefine your lifestyle, and discover the perfect address for your aspirations. Elevate your living with us.
+      Mumbai Estate your doorway to dream homes awaits. Explore curated properties, redefine your lifestyle, and discover the perfect address for your aspirations. Elevate your living with us.
       <p className='font-bold'>Your Home, Your Story.Let's Begin the Next Chapter Together!</p>
       </div>
       <Link to={'/search'} className='text-xs sm:text-sm text-blue-900 font-bold hover:underline'>
