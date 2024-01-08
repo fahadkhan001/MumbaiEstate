@@ -166,7 +166,7 @@ const handleListingDelete = async(listingID) =>{
 
 
   return (
-    <div className='p-3 max-w-lg mx-auto' >
+    <div className='p-3 max-w-lg mx-auto  rounded-lg border-black mt-7  shadow-md hover:shadow-lg hover:scale-105 transition-shadow overflow-hidden  w-full sm:w-[500px] h-full' >
     <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
     <form onSubmit={handleSubmit} className='flex flex-col gap-3'>
     <input onChange={(e)=>SetFile(e.target.files[0])} type='file' ref={fileRef} hidden accept='image/*'/>
@@ -216,7 +216,7 @@ const handleListingDelete = async(listingID) =>{
       <div className='flex flex-col gap-4'>
       <h1 className='text-center mt-7 text-2xl'>Your Listings</h1>
       {userListings.map((listing)=>(
-      <div key={listing._id} className=' border rounded-lg p-3 flex justify-between items-center gap-0'>
+      <div key={listing._id} className=' border rounded-lg p-3 flex justify-between items-center gap-2'>
       <Link to={`/listing/${listing._id}`}>
       <img
         src={listing.imageURLs[0]}
@@ -224,7 +224,7 @@ const handleListingDelete = async(listingID) =>{
         className='h-16 w-16 object-contain'
       />
     </Link>
-    <Link className='flex-1 text-slate-700 font-semibold  hover:underline truncate' to={`/listings/${listing._id}`}>
+    <Link className='flex-1 text-slate-700 font-semibold  hover:underline truncate' to={`/listing/${listing._id}`}>
     <p >{listing.name}</p>
     </Link>
   

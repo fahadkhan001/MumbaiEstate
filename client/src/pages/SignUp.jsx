@@ -41,7 +41,7 @@ export default function SignUp() {
     }
   };
   return (
-    <div className='p-3 max-w-lg mx-auto'>
+    <div className='p-3 max-w-lg mx-auto border-[1.5px] rounded-lg border-black mt-7  shadow-md hover:shadow-lg hover:scale-105 transition-shadow overflow-hidden  w-full sm:w-[500px] h-[500px]'>
       <h1 className=' text-blue-600 text-5xl text-center font font-semibold my-3 '>Mumbai Estate</h1>
       <h4 className='text-3xl text-center font-semibold my-3 '>Sign Up</h4>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>

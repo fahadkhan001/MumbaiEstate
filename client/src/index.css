@@ -7,3 +7,10 @@ body{
     
 }
 
+.wrapper{
+    display: flex flex-col;
+    justify-content: center;
+    align-items: center;
+    color:#fff;
+    background-color: purple;
+}
