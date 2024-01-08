@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import OAuth from '../components/OAuth';
+import { FaUser,FaLock } from "react-icons/fa";
 
 
 export default function SignUp() {
@@ -41,9 +42,9 @@ export default function SignUp() {
     }
   };
   return (
-    <div className='p-3 max-w-lg mx-auto border-[1.5px] rounded-lg border-black mt-7  shadow-md hover:shadow-lg hover:scale-105 transition-shadow overflow-hidden  w-full sm:w-[500px] h-[500px]'>
+    <div className='p-3 max-w-lg mx-auto border-[1.5px] rounded-lg border-black mt-7  shadow-md hover:shadow-lg hover:scale-105 transition-shadow overflow-hidden  w-full sm:w-[500px] h-full'>
       <h1 className=' text-blue-600 text-5xl text-center font font-semibold my-3 '>Mumbai Estate</h1>
-      <h4 className='text-3xl text-center font-semibold my-3 '>Sign Up</h4>
+      <h4 className='text-3xl text-center font-semibold my-3 '>Register</h4>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
           type='text'
@@ -67,6 +68,7 @@ export default function SignUp() {
           onChange={handleChange}
         />
 
+
         <button
           disabled={loading}
           className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
@@ -79,7 +81,7 @@ export default function SignUp() {
       <div className='flex gap-2 mt-5'>
         <p>Have an account?</p>
         <Link to={'/sign-in'}>
-          <span className='text-blue-700'>Sign in</span>
+          <span className='text-blue-700'>Login</span>
         </Link>
       </div>
       {error && <p className='text-red-500 mt-5'>{error}</p>}

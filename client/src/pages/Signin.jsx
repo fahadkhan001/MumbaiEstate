@@ -42,8 +42,8 @@ export default function SignIn() {
     }
   };
   return (
-    <div className='p-3 max-w-lg mx-auto border-[1.5px] rounded-lg border-black mt-7  shadow-md hover:shadow-lg hover:scale-105 transition-shadow overflow-hidden  w-full sm:w-[500px] h-[500px] 
-    '>
+    <div className='text-black h-[100vh] flex justify-center items-center bg-cover'  style={{"backgroundImage":"url('../assets/mumbai.jpg')"}}>
+    <div className='p-3 max-w-lg mx-auto border-[1.5px] rounded-lg border-black mt-3  shadow-md hover:shadow-lg hover:scale-105 transition-shadow overflow-hidden  w-full sm:w-[500px] h-[500px]'>
       <h1 className=' text-blue-600 text-5xl text-center font font-semibold my-3 '>Mumbai <span className='text-red-700'>Estate</span></h1>
       <h4 className='text-3xl text-center font-semibold my-3 '>Login</h4>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
@@ -56,7 +56,7 @@ export default function SignIn() {
           id='email'
           onChange={handleChange}
         />
-        <FaUser />
+        <FaUser className='relative right-8' />
         </div>
         <div className='flex items-center '>
         <input
@@ -66,7 +66,7 @@ export default function SignIn() {
           id='password'
           onChange={handleChange}
         />
-        <FaLock />
+        <FaLock className='relative right-8'/>
         </div>
         </div>
         
@@ -91,6 +91,6 @@ export default function SignIn() {
       {error && <p className='text-red-500 mt-5'>{error}</p>}
       
     </div>
-    
+    </div>
   );
 }
