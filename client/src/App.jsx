@@ -10,6 +10,7 @@ import CreateListing from './pages/CreateListing';
 import UpdateListings from './pages/UpdateListings';
 import Listing from './pages/Listing';
 import Search from './pages/Search';
+import PhoneNumber from './components/PhoneNumber';
 
 
 export default function App () {
@@ -21,6 +22,7 @@ export default function App () {
   
   <Route path='/sign-in' element={<Signin />} />
   <Route path='/sign-up' element={<SignUp />} />
+  <Route path='/signin-phonenumber' element={<PhoneNumber />} />
   
   <Route path='/about' element={<About />} />
   <Route path='/search' element={<Search/>} />
