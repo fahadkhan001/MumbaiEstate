@@ -86,14 +86,14 @@ export default function Home() {
                   background: `url(${listing.imageURLs[0]}) center no-repeat`,
                   backgroundSize: 'cover',
                 }}
-                className='h-[800px]'
+                className='h-[600px] w-full '
                 key={listing._id}
-              ></div>
+              ></div> 
             </SwiperSlide>
           ))}
       </Swiper>
 
-
+  
   {/*listing results for ofefr,sale adn rent */}
         <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10'>
         {

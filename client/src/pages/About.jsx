@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function About() {
   return (
+    <div style={{backgroundImage:'../assets/logo-color.png'}}>
     <div className='py-20 px-4 mx-auto max-w-6xl'>
     <h1 className='text-3xl font-bold mb-4 text-slate-800'>About Mumbai Estate</h1>
     <p className='mb-4 text-slate-700'>
@@ -13,6 +14,7 @@ export default function About() {
     <p className='mb-4 text-slate-800 '>
     for more information contact <span className='hover:underline'>kkfahad1530@gmail.com</span>
     </p>
+    </div>
     </div>
   )
 }

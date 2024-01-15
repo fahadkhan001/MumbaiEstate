@@ -2,7 +2,7 @@ import {FaSearch} from 'react-icons/fa'
 import {Link, useNavigate} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-
+import logo from '../images/logo.png'
 export default function Header() {
   const {currentUser}= useSelector(state=>state.user)
   const [searchTerm,setSearchTerm] = useState('');
@@ -34,10 +34,13 @@ export default function Header() {
     <header className='bg-blue-700 shadow-md '>
     <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
     <Link to="/">
+    <div className='flex flex-row items-center self-center gap-1'>
+    <img className='h-10 w-10 object-contain ' src={logo} alt='logo' />
     <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
     <span className='text-gray-50' >Mumbai</span>
     <span className='text-red-400' >Estate</span>
     </h1>
+    </div>
     </Link>
     {/*Search bar */}
 

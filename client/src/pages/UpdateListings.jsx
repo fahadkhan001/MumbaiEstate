@@ -205,16 +205,18 @@ const handleSubmit = async(e)=>{
                 <input type="number" id="bathrooms" min='1' max='10' className="p-3 border border-gray-300 rounded-lg" onChange={handleChange} value={formData.bathrooms} required  />
                 <p>baths</p>
             </div>
-            <div className="flex items-center gap-2" >
-                <input type="number" id="bhk" min='1' max='5' className="p-3 border border-gray-300 rounded-lg" onChange={handleChange} value={formData.bhk}  />
-                <p>bhk</p>
-            </div>
+            {formData.bedrooms.length < 5  && formData.bedrooms && ( 
+                <div className="flex items-center gap-2" >
+                    <input type="number" id="bhk" min='1' max='5' className="p-3 border border-gray-300 rounded-lg" onChange={handleChange} value={formData.bhk}  />
+                    <p>bhk</p>
+                </div>
+                )}
             <div className='flex items-center gap-2'>
             <input
               type='number'
               id='regularPrice'
               min='50'
-              max='10000000'
+              max='100000000000'
               required
               className='p-3 border border-gray-300 rounded-lg'
               onChange={handleChange}
@@ -233,7 +235,7 @@ const handleSubmit = async(e)=>{
                 type='number'
                 id='discountPrice'
                 min='0'
-                max='10000000'
+                max='1000000000'
                 required
                 className='p-3 border border-gray-300 rounded-lg'
                 onChange={handleChange}
