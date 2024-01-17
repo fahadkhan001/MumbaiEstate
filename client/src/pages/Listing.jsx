@@ -5,6 +5,8 @@ import { Navigation} from 'swiper/modules';
 import SwiperCore  from 'swiper'
 import 'swiper/css';
 import 'swiper/css/navigation';
+import axios from 'axios'
+
 import {
     FaBath,
     FaBed,
@@ -47,6 +49,40 @@ const Listing = () => {
         }   
         fetchListing();
     },[params.listingId])
+
+const handlebuynow=async(amount)=>{
+    const {data:{key}}= await axios.get("http://localhost:3000/api/payment/getkey") 
+    
+    const {data:{order}}= await axios.post("http://localhost:3000/api/payment/checkout",{amount})
+    console.log(order)
+  
+        const options  ={
+            key,
+            amount :order.amount,
+            currency:"INR",
+            name:"fahad_07",
+            description:"Razorpay learning",
+            image:"https://avatars.githubusercontent.com/u/97621401?s=400&v=4",
+            order_id :order.id,
+            callback_url:"http://localhost:3000/api/payment/verification",
+            prefill:{
+              name:"example",
+              email:"example.com",
+              contact:"1234567890",
+  
+            },
+            notes:{
+              "address":"razorpay official"
+            },
+            theme:{
+              "color":"#3399cc"
+            }
+        };
+        const razor = new window.Razorpay(options);
+        razor.open();
+   
+}
+
   return (
     <main>
         {loading && <p className='text-center my-7 text-2xl'>loading...</p>}
@@ -84,6 +120,7 @@ const Listing = () => {
             <p className='text-2xl font-semibold'>
             {listing.name} - ₹{' '}
             {listing.offer 
+                
                 ? listing.discountPrice.toLocaleString('en-IN')
                 :listing.regularPrice.toLocaleString('en-IN')
             }
@@ -95,13 +132,14 @@ const Listing = () => {
             {listing.address} 
             </p>
 
-            <div className='flex gap-4'>
+            <div className='flex gap-4 '>
             {listing.offer && (
-                <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1  rounded-md'>{listing.type==='rent'? 'For Rent':'For sale'}</p>
+                <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-3  rounded-md'>{listing.type==='rent'? 'For Rent':'For sale'}</p>
             )}
             {listing.offer && (
-                <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1  rounded-md'>₹{+listing.regularPrice - +listing.discountPrice} OFF</p>
-            )}
+                <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-3  rounded-md'>₹{+listing.regularPrice - +listing.discountPrice} OFF</p>
+            )}  
+<button onClick={()=>handlebuynow(listing.regularPrice)}  className='bg-blue-700 text-white p-3 border-white hover:scale-105  rounded-lg max-w-[100px] w-full'>Buy now {listing.regularPrice}</button>:
 
             </div>
             <p className='text-slate-800'>

@@ -11,6 +11,7 @@ import UpdateListings from './pages/UpdateListings';
 import Listing from './pages/Listing';
 import Search from './pages/Search';
 import PhoneNumber from './components/PhoneNumber';
+import PaymentSuccess from './components/PaymentSuccess';
 
 
 export default function App () {
@@ -23,7 +24,7 @@ export default function App () {
   <Route path='/sign-in' element={<Signin />} />
   <Route path='/sign-up' element={<SignUp />} />
   <Route path='/signin-phonenumber' element={<PhoneNumber />} />
-  
+  <Route path='/paymentsuccess' element={<PaymentSuccess />} />
   <Route path='/about' element={<About />} />
   <Route path='/search' element={<Search/>} />
   {/*Based in the listing id we gonna fetch it hence we are using :listingId  */}
