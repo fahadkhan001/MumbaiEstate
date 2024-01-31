@@ -134,12 +134,12 @@ const handlebuynow=async(amount)=>{
 
             <div className='flex gap-4 '>
             {listing.offer && (
-                <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-3  rounded-md'>{listing.type==='rent'? 'For Rent':'For sale'}</p>
+                <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-5  rounded-md'>{listing.type==='rent'? 'For Rent':'For sale'}</p>
             )}
             {listing.offer && (
-                <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-3  rounded-md'>₹{+listing.regularPrice - +listing.discountPrice} OFF</p>
+                <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-5  rounded-md'>₹{+listing.regularPrice - +listing.discountPrice} OFF</p>
             )}  
-<button onClick={()=>handlebuynow(listing.regularPrice)}  className='bg-blue-700 text-white p-3 border-white hover:scale-105  rounded-lg max-w-[100px] w-full'>Buy now {listing.regularPrice}</button>:
+<button onClick={()=>handlebuynow(listing.regularPrice)}  className='bg-blue-700 text-white p-3 border-white hover:scale-105  rounded-lg max-w-[100px] w-full'>Buy now {listing.regularPrice}</button>  
 
             </div>
             <p className='text-slate-800'>
