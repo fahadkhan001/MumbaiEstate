@@ -8,7 +8,7 @@ export const checkout = async(req,res,next)=>{
 
     try {
         const options = {
-            amount: Number(req.body.amount),  // amount in the smallest currency unit
+            amount: Number(req.body.amount*100),  // amount in the smallest currency unit
             currency: "INR",
             
           };
