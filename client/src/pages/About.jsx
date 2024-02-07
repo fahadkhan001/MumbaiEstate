@@ -12,7 +12,10 @@ export default function About() {
     Mumbai Estate is the brainchild of Mohammed Fahad Khan, a MERN stack developer with a passion for creating innovative and user-centric solutions. With a keen eye for detail and a commitment to excellence, Fahad has crafted an application that seamlessly combines technology with the intricacies of the real estate world. As the driving force behind Mumbai Estate, he envisions a platform that not only simplifies the property search process but also elevates the entire experience for users. With a foundation built on robust technology and a dedication to user satisfaction, Mohammed Fahad Khan brings his expertise to the forefront, ensuring Mumbai Estate stands as a testament to modern, efficient, and enjoyable home discovery
     </p>
     <p className='mb-4 text-slate-800 '>
-    for more information contact <span className='hover:underline'>kkfahad1530@gmail.com</span>
+    for more information contact <span className='hover:underline font-bold'>kkfahad1530@gmail.com</span>
+    </p>
+    <p>
+    In order to use this application you first need to <span className='font-bold'>sign-in using sign-in </span>method and then you can contect owner and can buy also using Razorpay.The Razorpay will work in Desktop only, for now maybe in further updates it will be compatible with mobile also.
     </p>
     </div>
     </div>
